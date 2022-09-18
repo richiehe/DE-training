@@ -1,0 +1,5 @@
+apache-airflow
+pyspark
+delta-spark
+alembic
+psycopg2-binary

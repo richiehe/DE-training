@@ -1,0 +1,19 @@
+version: '3'
+
+services:
+  dwh:
+    image: postgres:13
+    environment:
+      POSTGRES_USER: dwh
+      POSTGRES_PASSWORD: dwh
+      POSTGRES_DB: dwh
+    volumes:
+      - dwh-db-volume:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD", "pg_isready", "-U", "dwh"]
+      interval: 5s
+      retries: 5
+    ports: 
+      - 5432:5432
+volumes:
+  dwh-db-volume:

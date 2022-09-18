@@ -1,0 +1,16 @@
+.idea
+logs/
+!data/raw/.gitkeep
+data/stg/*
+!data/stg/.gitkeep
+venv/
+**/*.pyc
+__pycache__
+.vscode/
+/*.session.sql
+data/metabase/
+airflow/airflow.*
+airflow/*.txt
+airflow/*.py
+airflow/logs
+data/data_lake_bucket/*
