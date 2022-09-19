@@ -1,0 +1,52 @@
+from pyspark.sql.types import StructType, StructField, StringType, IntegerType, \
+    DateType, BooleanType, FloatType, TimestampType
+
+sales_order_schema = StructType([
+    StructField("SalesOrderID", IntegerType(), True), StructField("SalesOrderDetailID", IntegerType(), True),
+    StructField("RevisionNumber", IntegerType(), True), StructField("OrderDate", DateType(), True),
+    StructField("DueDate", DateType(), True), StructField("ShipDate", DateType(), True),
+    StructField("Status", IntegerType(), True), StructField("OnlineOrderFlag", BooleanType(), True),
+    StructField("SalesOrderNumber", StringType(), True), StructField("PurchaseOrderNumber", StringType(), True),
+    StructField("AccountNumber", StringType(), True), StructField("CustomerID", IntegerType(), True),
+    StructField("ShipToAddressID", IntegerType(), True), StructField("BillToAddressID", IntegerType(), True),
+    StructField("ShipMethod", StringType(), True), StructField("CreditCardApprovalCode", StringType(), True),
+    StructField("SubTotal", FloatType(), True), StructField("TaxAmt", FloatType(), True),
+    StructField("Freight", FloatType(), True), StructField("TotalDue", FloatType(), True),
+    StructField("Comment", StringType(), True), StructField("OrderQty", IntegerType(), True),
+    StructField("ProductID", IntegerType(), True), StructField("UnitPrice", FloatType(), True),
+    StructField("UnitPriceDiscount", FloatType(), True), StructField("LineTotal", FloatType(), True),
+    StructField("rowguid", StringType(), True), StructField("ModifiedDate", TimestampType(), True),
+    StructField("event_date", DateType(), True),
+])
+
+sales_order_rename_schema = {
+    'SalesOrderID': 'sales_order_id',
+    'SalesOrderDetailID': 'sales_order_detail_id',
+    'RevisionNumber': 'revision_number',
+    'OrderDate': 'order_date',
+    'DueDate': 'due_date',
+    'ShipDate': 'ship_date',
+    'Status': 'status',
+    'OnlineOrderFlag': 'online_order_flag',
+    'SalesOrderNumber': 'sales_order_number',
+    'PurchaseOrderNumber': 'purchase_order_number',
+    'AccountNumber': 'account_number',
+    'CustomerID': 'customer_id',
+    'ShipToAddressID': 'ship_to_address_id',
+    'BillToAddressID': 'bill_to_address_id',
+    'ShipMethod': 'ship_method',
+    'CreditCardApprovalCode': 'credit_card_approval_code',
+    'SubTotal': 'sub_total',
+    'TaxAmt': 'tax_amt',
+    'Freight': 'freight',
+    'TotalDue': 'total_due',
+    'Comment': 'comment',
+    'OrderQty': 'order_qty',
+    'ProductID': 'product_id',
+    'UnitPrice': 'unit_price',
+    'UnitPriceDiscount': 'unit_price_discount',
+    'LineTotal': 'line_total',
+    'rowguid': 'row_guid',
+    'ModifiedDate': 'modified_date',
+    'date': 'date'
+}

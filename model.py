@@ -38,3 +38,18 @@ class OdsSalesOrder(Base):
     row_guid = Column(String)
     modified_date = Column(TIMESTAMP)
     event_date = Column(DATE)
+
+
+class OdsAddress(Base):
+    __tablename__ = 'ods_address'
+
+    address_id = Column(INTEGER, primary_key=True)
+    address_line1 = Column(String)
+    address_line2 = Column(String)
+    city = Column(String)
+    state_province = Column(String)
+    country_region = Column(String)
+    postal_code = Column(String)
+    row_guid = Column(String)
+    modified_date = Column(TIMESTAMP)
+    processed_date = Column(DATE)
