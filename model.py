@@ -53,3 +53,14 @@ class OdsAddress(Base):
     row_guid = Column(String)
     modified_date = Column(TIMESTAMP)
     processed_date = Column(DATE)
+
+
+class OdsCustomrAddress(Base):
+    __tablename__ = 'ods_customer_address'
+
+    customer_id = Column(INTEGER, primary_key=True)
+    address_id = Column(INTEGER, primary_key=True)
+    address_type = Column(String)
+    row_guid = Column(String)
+    modified_date = Column(TIMESTAMP)
+    processed_date = Column(DATE)

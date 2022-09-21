@@ -27,14 +27,20 @@ def to_lake(dataset, src_path, sink_path):
 
 
 if __name__ == '__main__':
-    to_lake(
-        'sales_order',
-        f'{Path.home()}/batch-data-pipeline-exercise/data/raw/sales_order',
-        f'{Path.home()}/batch-data-pipeline-exercise/data/data_lake_bucket/sales_order',
-    )
+    # to_lake(
+    #     'sales_order',
+    #     f'{Path.home()}/batch-data-pipeline-exercise/data/raw/sales_order',
+    #     f'{Path.home()}/batch-data-pipeline-exercise/data/data_lake_bucket/sales_order',
+    # )
 
     # to_lake(
     #     'address',
     #     f'{Path.home()}/batch-data-pipeline-exercise/data/raw/address',
     #     f'{Path.home()}/batch-data-pipeline-exercise/data/data_lake_bucket/address',
     # )
+
+    to_lake(
+        'customer_address',
+        f'{Path.home()}/batch-data-pipeline-exercise/data/raw/customer_address',
+        f'{Path.home()}/batch-data-pipeline-exercise/data/data_lake_bucket/customer_address',
+    )
