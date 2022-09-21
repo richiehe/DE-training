@@ -64,3 +64,26 @@ class OdsCustomrAddress(Base):
     row_guid = Column(String)
     modified_date = Column(TIMESTAMP)
     processed_date = Column(DATE)
+
+
+class OdsProduct(Base):
+    __tablename__ = 'ods_product'
+
+    product_id = Column(INTEGER, primary_key=True)
+    name = Column(String)
+    product_number = Column(String)
+    color = Column(String)
+    standard_cost = Column(FLOAT)
+    list_price = Column(FLOAT)
+    size = Column(String)
+    weight = Column(FLOAT)
+    product_category_id = Column(INTEGER)
+    product_model_id = Column(INTEGER)
+    sell_start_date = Column(TIMESTAMP)
+    sell_end_date = Column(TIMESTAMP)
+    discontinued_date = Column(TIMESTAMP)
+    thumbnail_photo = Column(String)
+    thumbnail_photo_file_name = Column(String)
+    row_guid = Column(String)
+    modified_date = Column(TIMESTAMP)
+    processed_date = Column(DATE)

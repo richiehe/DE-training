@@ -39,8 +39,14 @@ if __name__ == '__main__':
     #     f'{Path.home()}/batch-data-pipeline-exercise/data/data_lake_bucket/address',
     # )
 
+    # to_lake(
+    #     'customer_address',
+    #     f'{Path.home()}/batch-data-pipeline-exercise/data/raw/customer_address',
+    #     f'{Path.home()}/batch-data-pipeline-exercise/data/data_lake_bucket/customer_address',
+    # )
+
     to_lake(
-        'customer_address',
-        f'{Path.home()}/batch-data-pipeline-exercise/data/raw/customer_address',
-        f'{Path.home()}/batch-data-pipeline-exercise/data/data_lake_bucket/customer_address',
+        'product',
+        f'{Path.home()}/batch-data-pipeline-exercise/data/raw/product',
+        f'{Path.home()}/batch-data-pipeline-exercise/data/data_lake_bucket/product',
     )

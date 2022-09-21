@@ -46,6 +46,7 @@ def to_ods(dataset, src_path):
 
 
 if __name__ == '__main__':
-    to_ods('sales_order', f'{Path.home()}/batch-data-pipeline-exercise/data/data_lake_bucket/sales_order')
-    to_ods('address', f'{Path.home()}/batch-data-pipeline-exercise/data/data_lake_bucket/address')
-    to_ods('customer_address', f'{Path.home()}/batch-data-pipeline-exercise/data/data_lake_bucket/customer_address')
+    # to_ods('sales_order', f'{Path.home()}/batch-data-pipeline-exercise/data/data_lake_bucket/sales_order')
+    # to_ods('address', f'{Path.home()}/batch-data-pipeline-exercise/data/data_lake_bucket/address')
+    # to_ods('customer_address', f'{Path.home()}/batch-data-pipeline-exercise/data/data_lake_bucket/customer_address')
+    to_ods('product', f'{Path.home()}/batch-data-pipeline-exercise/data/data_lake_bucket/product')
