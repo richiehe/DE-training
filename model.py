@@ -108,3 +108,14 @@ class OdsProductDescription(Base):
     row_guid = Column(String)
     modified_date = Column(TIMESTAMP)
     processed_date = Column(DATE)
+
+
+class OdsProductModel(Base):
+    __tablename__ = 'ods_product_model'
+
+    product_model_id = Column(INTEGER, primary_key=True)
+    name = Column(String)
+    catalog_description = Column(String)
+    row_guid = Column(String)
+    modified_date = Column(TIMESTAMP)
+    processed_date = Column(DATE)
