@@ -51,8 +51,14 @@ if __name__ == '__main__':
     #     f'{Path.home()}/batch-data-pipeline-exercise/data/data_lake_bucket/product',
     # )
 
+    # to_lake(
+    #     'product_category',
+    #     f'{Path.home()}/batch-data-pipeline-exercise/data/raw/product_category',
+    #     f'{Path.home()}/batch-data-pipeline-exercise/data/data_lake_bucket/product_category',
+    # )
+
     to_lake(
-        'product_category',
-        f'{Path.home()}/batch-data-pipeline-exercise/data/raw/product_category',
-        f'{Path.home()}/batch-data-pipeline-exercise/data/data_lake_bucket/product_category',
+        'product_description',
+        f'{Path.home()}/batch-data-pipeline-exercise/data/raw/product_description',
+        f'{Path.home()}/batch-data-pipeline-exercise/data/data_lake_bucket/product_description',
     )
