@@ -52,4 +52,5 @@ if __name__ == '__main__':
     # to_ods('product', f'{Path.home()}/batch-data-pipeline-exercise/data/data_lake_bucket/product')
     # to_ods('product_category', f'{Path.home()}/batch-data-pipeline-exercise/data/data_lake_bucket/product_category')
     # to_ods('product_description', f'{Path.home()}/batch-data-pipeline-exercise/data/data_lake_bucket/product_description')
-    to_ods('product_model', f'{Path.home()}/batch-data-pipeline-exercise/data/data_lake_bucket/product_model')
+    # to_ods('product_model', f'{Path.home()}/batch-data-pipeline-exercise/data/data_lake_bucket/product_model')
+    to_ods('product_model_product_description', f'{Path.home()}/batch-data-pipeline-exercise/data/data_lake_bucket/product_model_product_description')
