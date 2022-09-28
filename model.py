@@ -130,3 +130,24 @@ class OdsProductModelProductDescription(Base):
     row_guid = Column(String)
     modified_date = Column(TIMESTAMP)
     processed_date = Column(DATE)
+
+
+class OdsCustomer(Base):
+    __tablename__ = 'ods_customer'
+
+    customer_id = Column(INTEGER, primary_key=True)
+    name_style = Column(Boolean)
+    title = Column(String)
+    first_name = Column(String)
+    middle_name = Column(String)
+    last_name = Column(String)
+    suffix = Column(String)
+    company_name = Column(String)
+    sales_person = Column(String)
+    email_address = Column(String)
+    phone = Column(String)
+    password_hash = Column(String)
+    password_salt = Column(String)
+    row_guid = Column(String)
+    modified_date = Column(TIMESTAMP)
+    processed_date = Column(DATE)
