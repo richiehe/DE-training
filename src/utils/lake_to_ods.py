@@ -2,19 +2,9 @@ from pathlib import Path
 
 from delta import configure_spark_with_delta_pip
 from pyspark.sql import SparkSession, DataFrame
-from sqlalchemy import create_engine
 
 from schema.dataset_schema import DATASET_SCHEMA
-
-
-def remove_partition_data(df, dataset, partition_field):
-    partition = ','.join(df.rdd.map(lambda x: f"'{str(x[partition_field])}'").distinct().collect())
-    engine = create_engine('postgresql+psycopg2://dwh:dwh@localhost:5432/dwh')
-    connection = engine.connect()
-    print('partition: ', partition)
-    query = f"DELETE FROM ods_{dataset} WHERE {partition_field} in ({partition})"
-    print(query)
-    connection.execute(query)
+from utils.db_utils import remove_ods_partition_data
 
 
 def to_ods(dataset, src_path):
@@ -30,7 +20,7 @@ def to_ods(dataset, src_path):
         dataset_df = dataset_df.withColumnRenamed(old_name, new_name)
 
     if dataset_df.count() > 0:
-        remove_partition_data(dataset_df, dataset, DATASET_SCHEMA.get(dataset).get('partition_field'))
+        remove_ods_partition_data(dataset_df, dataset, DATASET_SCHEMA.get(dataset).get('partition_field'))
 
     dataset_df.show()
     dataset_df.write \
@@ -46,7 +36,7 @@ def to_ods(dataset, src_path):
 
 
 if __name__ == '__main__':
-    # to_ods('sales_order', f'{Path.home()}/batch-data-pipeline-exercise/data/data_lake_bucket/sales_order')
+    to_ods('sales_order', f'{Path.home()}/batch-data-pipeline-exercise/data/data_lake_bucket/sales_order')
     # to_ods('address', f'{Path.home()}/batch-data-pipeline-exercise/data/data_lake_bucket/address')
     # to_ods('customer_address', f'{Path.home()}/batch-data-pipeline-exercise/data/data_lake_bucket/customer_address')
     # to_ods('product', f'{Path.home()}/batch-data-pipeline-exercise/data/data_lake_bucket/product')
@@ -54,4 +44,4 @@ if __name__ == '__main__':
     # to_ods('product_description', f'{Path.home()}/batch-data-pipeline-exercise/data/data_lake_bucket/product_description')
     # to_ods('product_model', f'{Path.home()}/batch-data-pipeline-exercise/data/data_lake_bucket/product_model')
     # to_ods('product_model_product_description', f'{Path.home()}/batch-data-pipeline-exercise/data/data_lake_bucket/product_model_product_description')
-    to_ods('customer', f'{Path.home()}/batch-data-pipeline-exercise/data/data_lake_bucket/customer')
+    # to_ods('customer', f'{Path.home()}/batch-data-pipeline-exercise/data/data_lake_bucket/customer')
