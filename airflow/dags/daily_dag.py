@@ -3,7 +3,6 @@ import datetime
 from airflow import DAG
 from airflow.operators.bash import BashOperator
 
-connection_id = 'dwh'
 default_args = {"owner": "airflow"}
 
 with DAG(
@@ -28,7 +27,6 @@ with DAG(
             "sink_path": "/data/data_lake_bucket/address/",
             "schema_key": "address",
         }
-
     )
 
     customer_to_data_lake = BashOperator(

@@ -1,5 +1,5 @@
 #!/bin/bash
 
-export AIRFLOW_HOME=$(pwd)/airflow
+export AIRFLOW_HOME=$(PWD)/airflow
 
 airflow standalone
