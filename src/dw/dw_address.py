@@ -1,29 +1,31 @@
 from pathlib import Path
 
 from pyspark.sql import SparkSession
-from pyspark.sql.functions import col
+from pyspark.sql.functions import col, when
 
 from schema.dataset_schema import DATASET_SCHEMA
 from utils.db_utils import remove_dw_partition_data
 
 if __name__ == '__main__':
-    spark = SparkSession.builder.appName("dw_sales_order") \
+    spark = SparkSession.builder.appName("dw_address") \
         .config("spark.jars", f'{Path.home()}/DE-training/driver/postgresql-42.5.0.jar') \
         .getOrCreate()
 
     df = spark.read.format("jdbc") \
         .option("driver", "org.postgresql.Driver") \
         .option("url", "jdbc:postgresql://localhost:5432/dwh") \
-        .option("dbtable", "ods_sales_order") \
+        .option("dbtable", "ods_address") \
         .option("user", "dwh") \
         .option("password", "dwh") \
         .load()
 
-    df = df.filter(col('event_date') == '2008-06-01') \
-        .dropDuplicates(['sales_order_id', 'sales_order_detail_id'])
+    df = df.filter(col('processed_date') == '2022-09-19') \
+        .dropDuplicates(['address_id'])
 
     if df.count() > 0:
-        remove_dw_partition_data(df, 'sales_order', DATASET_SCHEMA.get('sales_order').get('partition_field'))
+        remove_dw_partition_data(df, 'address', DATASET_SCHEMA.get('address').get('partition_field'))
+
+    df = df.withColumn("is_valid", when(df.processed_date == '2022-09-19', True).otherwise(False))
 
     df.show()
     df.write \
@@ -31,7 +33,7 @@ if __name__ == '__main__':
         .format("jdbc") \
         .option("driver", "org.postgresql.Driver") \
         .option("url", "jdbc:postgresql://localhost:5432/dwh") \
-        .option("dbtable", "dw_sales_order") \
+        .option("dbtable", "dw_address") \
         .option("user", "dwh") \
         .option("password", "dwh") \
         .save()
