@@ -20,7 +20,7 @@ with DAG(
     address_to_data_lake = BashOperator(
         task_id="address_to_data_lake",
         bash_command="""
-            python /src/utils/source_to_lake.py
+            python ~/Documents/DE-training/src/utils/source_to_lake.py
         """,
         params={
             "src_path": "/data/raw/address/processed_date={{ ds }}/Address.csv",
@@ -32,7 +32,7 @@ with DAG(
     customer_to_data_lake = BashOperator(
         task_id="customer_to_data_lake",
         bash_command="""
-            python ~/batch-data-pipeline-exercise/src/utils/source_to_lake.py
+            python ~/Documents/DE-training/src/utils/source_to_lake.py
         """,
         params={
             'src_path': "/data/raw/customer/processed_date={{ ds }}/Customer.csv",
@@ -44,7 +44,7 @@ with DAG(
     customer_address_to_data_lake = BashOperator(
         task_id="customer_address_to_data_lake",
         bash_command="""
-            python ~/batch-data-pipeline-exercise/src/utils/source_to_lake.py
+            python ~/Documents/DE-training/src/utils/source_to_lake.py
         """,
         params={
             'src_path': "/data/raw/customer_address/processed_date={{ ds }}/CustomerAddress.csv",
@@ -56,7 +56,7 @@ with DAG(
     product_to_data_lake = BashOperator(
         task_id="product_to_data_lake",
         bash_command="""
-            python ~/batch-data-pipeline-exercise/src/utils/source_to_lake.py
+            python ~/Documents/DE-training/src/utils/source_to_lake.py
         """,
         params={
             'src_path': "/data/raw/product/processed_date={{ ds }}/Product.csv",
@@ -68,7 +68,7 @@ with DAG(
     product_category_to_data_lake = BashOperator(
         task_id="product_category_to_data_lake",
         bash_command="""
-            python ~/batch-data-pipeline-exercise/src/utils/source_to_lake.py
+            python ~/Documents/DE-training/src/utils/source_to_lake.py
         """,
         params={
             'src_path': "/data/raw/product_category/processed_date={{ ds }}/ProductCategory.csv",
@@ -80,7 +80,7 @@ with DAG(
     product_description_to_data_lake = BashOperator(
         task_id="product_description_to_data_lake",
         bash_command="""
-            python ~/batch-data-pipeline-exercise/src/utils/source_to_lake.py
+            python ~/Documents/DE-training/src/utils/source_to_lake.py
         """,
         params={
             'src_path': "/data/raw/product_description/processed_date={{ ds }}/ProductDescription.csv",
@@ -92,7 +92,7 @@ with DAG(
     product_model_to_data_lake = BashOperator(
         task_id="product_model_to_data_lake",
         bash_command="""
-            python ~/batch-data-pipeline-exercise/src/utils/source_to_lake.py
+            python ~/Documents/DE-training/src/utils/source_to_lake.py
         """,
         params={
             'src_path': "/data/raw/product_model/processed_date={{ ds }}/ProductModel.csv",
@@ -104,7 +104,7 @@ with DAG(
     product_model_product_description_to_data_lake = BashOperator(
         task_id="product_model_product_description_to_data_lake",
         bash_command="""
-            python ~/batch-data-pipeline-exercise/src/utils/source_to_lake.py
+            python ~/Documents/DE-training/src/utils/source_to_lake.py
         """,
         params={
             'src_path': "/data/raw/product_model_product_description/processed_date={{ ds }}/ProductModelProductDescription.csv",
@@ -116,7 +116,7 @@ with DAG(
     sales_order_to_data_lake = BashOperator(
         task_id="sales_order_to_data_lake",
         bash_command="""
-            python ~/batch-data-pipeline-exercise/src/utils/source_to_lake.py
+            python ~/Documents/DE-training/src/utils/source_to_lake.py
         """,
         params={
             'src_path': "/data/raw/sales_order/processed_date={{ ds }}/SalesOrder.csv",
@@ -145,99 +145,99 @@ with DAG(
     address_to_ods = BashOperator(
         task_id="address_to_ods",
         bash_command="""
-            python ~/batch-data-pipeline-exercise/src/address_to_ods.py
+            python ~/Documents/DE-training/src/lake_to_ods.py
         """,
         params={
             'src_path': "/data/data_lake_bucket/address/processed_date={{ ds }}/",
-            'table_name': 'ods.ods_address',
+            'table_name': 'ods_address',
         },
     )
 
     customer_to_ods = BashOperator(
         task_id="customer_to_ods",
         bash_command="""
-            python ~/batch-data-pipeline-exercise/src/customer_to_ods.py
+            python ~/Documents/DE-training/src/lake_to_ods.py
         """,
         params={
             'src_path': "/data/data_lake_bucket/customer/processed_date={{ ds }}/",
-            'table_name': 'ods.ods_customer',
+            'table_name': 'ods_customer',
         },
     )
 
     customer_address_to_ods = BashOperator(
         task_id="customer_address_to_ods",
         bash_command="""
-            python ~/batch-data-pipeline-exercise/src/customer_address_to_ods.py
+            python ~/Documents/DE-training/src/lake_to_ods.py
         """,
         params={
             'src_path': "/data/data_lake_bucket/customer_address/processed_date={{ ds }}/",
-            'table_name': 'ods.ods_customer_address',
+            'table_name': 'ods_customer_address',
         },
     )
 
     product_to_ods = BashOperator(
         task_id="product_to_ods",
         bash_command="""
-            python ~/batch-data-pipeline-exercise/src/product_to_ods.py
+            python ~/Documents/DE-training/src/lake_to_ods.py
         """,
         params={
             'src_path': "/data/data_lake_bucket/product/processed_date={{ ds }}/",
-            'table_name': 'ods.ods_customer_address',
+            'table_name': 'ods_customer_address',
         },
     )
 
     product_category_to_ods = BashOperator(
         task_id="product_category_to_ods",
         bash_command="""
-            python ~/batch-data-pipeline-exercise/src/product_category_to_ods.py
+            python ~/Documents/DE-training/src/lake_to_ods.py
         """,
         params={
             'src_path': "/data/data_lake_bucket/product_category/processed_date={{ ds }}/",
-            'table_name': 'ods.ods_product_category',
+            'table_name': 'ods_product_category',
         },
     )
 
     product_description_to_ods = BashOperator(
         task_id="product_description_to_ods",
         bash_command="""
-            python ~/batch-data-pipeline-exercise/src/product_description_to_ods.py
+            python ~/Documents/DE-training/src/lake_to_ods.py
         """,
         params={
             'src_path': "/data/data_lake_bucket/product_description/processed_date={{ ds }}/",
-            'table_name': 'ods.ods_product_description',
+            'table_name': 'ods_product_description',
         },
     )
 
     product_model_to_ods = BashOperator(
         task_id="product_model_to_ods",
         bash_command="""
-            python ~/batch-data-pipeline-exercise/src/product_model_to_ods.py
+            python ~/Documents/DE-training/src/lake_to_ods.py
         """,
         params={
             'src_path': "/data/data_lake_bucket/product_model/processed_date={{ ds }}/",
-            'table_name': 'ods.ods_product_model',
+            'table_name': 'ods_product_model',
         },
     )
 
     product_model_product_description_to_ods = BashOperator(
         task_id="product_model_product_description_to_ods",
         bash_command="""
-            python ~/batch-data-pipeline-exercise/src/product_model_product_description_to_ods.py
+            python ~/Documents/DE-training/src/lake_to_ods.py
         """,
         params={
             'src_path': "/data/data_lake_bucket/product_model_product_description/processed_date={{ ds }}/",
-            'table_name': 'ods.ods_product_model_product_description',
+            'table_name': 'ods_product_model_product_description',
         },
     )
 
     sales_order_to_data_ods = BashOperator(
         task_id="sales_order_to_ods",
         bash_command="""
-            python ~/batch-data-pipeline-exercise/src/sales_order_to_ods.py
+            python ~/Documents/DE-training/src/lake_to_ods.py
         """,
         params={
             'src_path': "/data/data_lake_bucket/sales_order/processed_date={{ ds }}/",
-            'table_name': 'ods.ods_sales_order',
+            'table_name': 'ods_sales_order',
         },
     )
 
