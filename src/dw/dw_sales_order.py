@@ -8,7 +8,7 @@ from utils.db_utils import remove_dw_partition_data
 
 if __name__ == '__main__':
     spark = SparkSession.builder.appName("dw_sales_order") \
-        .config("spark.jars", f'{Path.home()}/batch-data-pipeline-exercise/driver/postgresql-42.5.0.jar') \
+        .config("spark.jars", f'{Path.home()}/Documents/DE-training/driver/postgresql-42.5.0.jar') \
         .getOrCreate()
 
     df = spark.read.format("jdbc") \

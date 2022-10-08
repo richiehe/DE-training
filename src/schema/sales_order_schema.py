@@ -48,5 +48,5 @@ sales_order_rename_schema = {
     'LineTotal': 'line_total',
     'rowguid': 'row_guid',
     'ModifiedDate': 'modified_date',
-    'date': 'date'
+    'event_date': 'event_date'
 }
