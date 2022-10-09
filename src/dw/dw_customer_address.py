@@ -4,7 +4,7 @@ from pyspark.sql import SparkSession
 from pyspark.sql.functions import col, when
 
 from schema.dataset_schema import DATASET_SCHEMA
-from utils.db_utils import remove_dw_partition_data
+from utils.db_utils import remove_partition_data
 
 if __name__ == '__main__':
     spark = SparkSession.builder.appName("dw_customer_address") \
@@ -23,7 +23,7 @@ if __name__ == '__main__':
         .dropDuplicates(['customer_id', 'address_id'])
 
     if df.count() > 0:
-        remove_dw_partition_data(df, 'customer_address', DATASET_SCHEMA.get('customer_address').get('partition_field'))
+        remove_partition_data(df, 'dw', 'customer_address', DATASET_SCHEMA.get('customer_address').get('partition_field'))
 
     df = df.withColumn("is_valid", when(df.processed_date == '2022-09-19', True).otherwise(False))
 

@@ -4,7 +4,7 @@ from pyspark.sql import SparkSession
 from pyspark.sql.functions import col, when
 
 from schema.dataset_schema import DATASET_SCHEMA
-from utils.db_utils import remove_dw_partition_data
+from utils.db_utils import remove_partition_data
 
 if __name__ == '__main__':
     spark = SparkSession.builder.appName("dw_product") \
@@ -23,7 +23,7 @@ if __name__ == '__main__':
         .dropDuplicates(['product_id'])
 
     if df.count() > 0:
-        remove_dw_partition_data(df, 'product', DATASET_SCHEMA.get('product').get('product'))
+        remove_partition_data(df, 'dw', 'product', DATASET_SCHEMA.get('product').get('product'))
 
     df = df.withColumn("is_valid", when(df.processed_date == '2022-09-19', True).otherwise(False))
 

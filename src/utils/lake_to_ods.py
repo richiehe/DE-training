@@ -4,7 +4,7 @@ from delta import configure_spark_with_delta_pip
 from pyspark.sql import SparkSession, DataFrame
 
 from schema.dataset_schema import DATASET_SCHEMA
-from utils.db_utils import remove_ods_partition_data
+from utils.db_utils import remove_partition_data
 
 
 def to_ods(dataset, src_path):
@@ -20,7 +20,7 @@ def to_ods(dataset, src_path):
         dataset_df = dataset_df.withColumnRenamed(old_name, new_name)
 
     if dataset_df.count() > 0:
-        remove_ods_partition_data(dataset_df, dataset, DATASET_SCHEMA.get(dataset).get('partition_field'))
+        remove_partition_data(dataset_df, 'ods', dataset, DATASET_SCHEMA.get(dataset).get('partition_field'))
 
     dataset_df.show()
     dataset_df.write \
