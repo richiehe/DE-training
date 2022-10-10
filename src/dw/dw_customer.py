@@ -6,7 +6,7 @@ from utils.spark_utils import init_spark_session, spark_read_from_db, spark_writ
 
 if __name__ == '__main__':
     source_dbtable = "ods_customer"
-    target_dbtable = "dw_customer"
+    target_dbtable = "dw.dw_customer"
 
     spark = init_spark_session(target_dbtable)
 

@@ -6,7 +6,7 @@ from utils.spark_utils import init_spark_session, spark_read_from_db, spark_writ
 
 if __name__ == '__main__':
     source_dbtable = "ods_product"
-    target_dbtable = "dw_product"
+    target_dbtable = "dw.dw_product"
     spark = init_spark_session(target_dbtable)
 
     df = spark_read_from_db(spark, source_dbtable, col('processed_date') == '2022-09-19')
