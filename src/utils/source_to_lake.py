@@ -3,7 +3,7 @@ from pathlib import Path
 from delta import configure_spark_with_delta_pip
 from pyspark.sql import SparkSession
 
-from schema.dataset_schema import DATASET_SCHEMA
+from src.schema.dataset_schema import DATASET_SCHEMA
 
 
 def to_lake(dataset, src_path, sink_path):
