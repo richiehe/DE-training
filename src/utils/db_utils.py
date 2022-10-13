@@ -6,6 +6,6 @@ def remove_partition_data(df, layer, dataset, partition_field):
     engine = create_engine('postgresql+psycopg2://dwh:dwh@localhost:5432/dwh')
     connection = engine.connect()
     print('partition: ', partition)
-    query = f"DELETE FROM {layer}_{dataset} WHERE {partition_field} in ({partition})"
+    query = f"DELETE FROM {layer}.{dataset} WHERE {partition_field} in ({partition})"
     print(query)
     connection.execute(query)

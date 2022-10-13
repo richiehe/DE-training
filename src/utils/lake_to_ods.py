@@ -28,7 +28,7 @@ def to_ods(dataset, src_path):
         .format("jdbc") \
         .option("driver", "org.postgresql.Driver") \
         .option("url", "jdbc:postgresql://localhost:5432/dwh") \
-        .option("dbtable", f"ods_{dataset}") \
+        .option("dbtable", f"ods.{dataset}") \
         .option("user", "dwh") \
         .option("password", "dwh") \
         .save()

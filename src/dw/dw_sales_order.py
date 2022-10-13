@@ -5,8 +5,8 @@ from utils.db_utils import remove_partition_data
 from utils.spark_utils import init_spark_session, spark_read_from_db, spark_write_df_into_db
 
 if __name__ == '__main__':
-    source_dbtable = "ods_sales_order"
-    target_dbtable = "dw.dw_sales_order"
+    source_dbtable = "ods.sales_order"
+    target_dbtable = "dw.sales_order"
 
     spark = init_spark_session(target_dbtable)
 

@@ -7,7 +7,8 @@ metadata = Base.metadata
 
 
 class OdsSalesOrder(Base):
-    __tablename__ = 'ods_sales_order'
+    __tablename__ = 'sales_order'
+    __table_args__ = {"schema": "ods"}
 
     sales_order_id = Column(INTEGER)
     sales_order_detail_id = Column(INTEGER, primary_key=True)
@@ -41,7 +42,8 @@ class OdsSalesOrder(Base):
 
 
 class OdsAddress(Base):
-    __tablename__ = 'ods_address'
+    __tablename__ = 'address'
+    __table_args__ = {"schema": "ods"}
 
     address_id = Column(INTEGER, primary_key=True)
     address_line1 = Column(String)
@@ -56,7 +58,8 @@ class OdsAddress(Base):
 
 
 class OdsCustomrAddress(Base):
-    __tablename__ = 'ods_customer_address'
+    __tablename__ = 'customer_address'
+    __table_args__ = {"schema": "ods"}
 
     customer_id = Column(INTEGER, primary_key=True)
     address_id = Column(INTEGER, primary_key=True)
@@ -67,7 +70,8 @@ class OdsCustomrAddress(Base):
 
 
 class OdsProduct(Base):
-    __tablename__ = 'ods_product'
+    __tablename__ = 'product'
+    __table_args__ = {"schema": "ods"}
 
     product_id = Column(INTEGER, primary_key=True)
     name = Column(String)
@@ -90,7 +94,8 @@ class OdsProduct(Base):
 
 
 class OdsProductCategory(Base):
-    __tablename__ = 'ods_product_category'
+    __tablename__ = 'product_category'
+    __table_args__ = {"schema": "ods"}
 
     product_category_id = Column(INTEGER, primary_key=True)
     parent_product_category_id = Column(String)
@@ -101,7 +106,8 @@ class OdsProductCategory(Base):
 
 
 class OdsProductDescription(Base):
-    __tablename__ = 'ods_product_description'
+    __tablename__ = 'product_description'
+    __table_args__ = {"schema": "ods"}
 
     product_description_id = Column(INTEGER, primary_key=True)
     description = Column(String)
@@ -111,7 +117,8 @@ class OdsProductDescription(Base):
 
 
 class OdsProductModel(Base):
-    __tablename__ = 'ods_product_model'
+    __tablename__ = 'product_model'
+    __table_args__ = {"schema": "ods"}
 
     product_model_id = Column(INTEGER, primary_key=True)
     name = Column(String)
@@ -122,7 +129,8 @@ class OdsProductModel(Base):
 
 
 class OdsProductModelProductDescription(Base):
-    __tablename__ = 'ods_product_model_product_description'
+    __tablename__ = 'product_model_product_description'
+    __table_args__ = {"schema": "ods"}
 
     product_model_id = Column(INTEGER, primary_key=True)
     product_description_id = Column(INTEGER, primary_key=True)
@@ -133,7 +141,8 @@ class OdsProductModelProductDescription(Base):
 
 
 class OdsCustomer(Base):
-    __tablename__ = 'ods_customer'
+    __tablename__ = 'customer'
+    __table_args__ = {"schema": "ods"}
 
     customer_id = Column(INTEGER, primary_key=True)
     name_style = Column(Boolean)
@@ -154,7 +163,8 @@ class OdsCustomer(Base):
 
 
 class DWSalesOrder(Base):
-    __tablename__ = 'dw_sales_order'
+    __tablename__ = 'sales_order'
+    __table_args__ = {"schema": "dw"}
 
     sales_order_id = Column(INTEGER, primary_key=True)
     sales_order_detail_id = Column(INTEGER, primary_key=True)
