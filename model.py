@@ -57,7 +57,7 @@ class OdsAddress(Base):
     processed_date = Column(DATE)
 
 
-class OdsCustomrAddress(Base):
+class OdsCustomerAddress(Base):
     __tablename__ = 'customer_address'
     __table_args__ = {"schema": "ods"}
 
@@ -162,7 +162,7 @@ class OdsCustomer(Base):
     processed_date = Column(DATE)
 
 
-class DWSalesOrder(Base):
+class DwSalesOrder(Base):
     __tablename__ = 'sales_order'
     __table_args__ = {"schema": "dw"}
 
@@ -196,3 +196,124 @@ class DWSalesOrder(Base):
     modified_date = Column(TIMESTAMP)
     event_date = Column(DATE)
 
+
+class DwProduct(Base):
+    __tablename__ = 'product'
+    __table_args__ = {"schema": "dw"}
+
+    product_id = Column(INTEGER, primary_key=True)
+    name = Column(String)
+    product_number = Column(String)
+    color = Column(String)
+    standard_cost = Column(FLOAT)
+    list_price = Column(FLOAT)
+    size = Column(String)
+    weight = Column(FLOAT)
+    product_category_id = Column(INTEGER)
+    product_model_id = Column(INTEGER)
+    sell_start_date = Column(TIMESTAMP)
+    sell_end_date = Column(TIMESTAMP)
+    discontinued_date = Column(TIMESTAMP)
+    thumbnail_photo = Column(String)
+    thumbnail_photo_file_name = Column(String)
+    row_guid = Column(String)
+    modified_date = Column(TIMESTAMP)
+    processed_date = Column(DATE)
+    is_valid = Column(Boolean)
+
+
+class DwCustomerAddress(Base):
+    __tablename__ = 'customer_address'
+    __table_args__ = {"schema": "dw"}
+
+    customer_id = Column(INTEGER, primary_key=True)
+    address_id = Column(INTEGER, primary_key=True)
+    address_type = Column(String)
+    row_guid = Column(String)
+    modified_date = Column(TIMESTAMP)
+    processed_date = Column(DATE)
+    is_valid = Column(Boolean)
+
+
+class DwCustomer(Base):
+    __tablename__ = 'customer'
+    __table_args__ = {"schema": "dw"}
+
+    customer_id = Column(INTEGER, primary_key=True)
+    name_style = Column(Boolean)
+    title = Column(String)
+    first_name = Column(String)
+    middle_name = Column(String)
+    last_name = Column(String)
+    suffix = Column(String)
+    company_name = Column(String)
+    sales_person = Column(String)
+    email_address = Column(String)
+    phone = Column(String)
+    password_hash = Column(String)
+    password_salt = Column(String)
+    row_guid = Column(String)
+    modified_date = Column(TIMESTAMP)
+    processed_date = Column(DATE)
+    is_valid = Column(Boolean)
+
+
+class DwAddress(Base):
+    __tablename__ = 'address'
+    __table_args__ = {"schema": "dw"}
+
+    address_id = Column(INTEGER, primary_key=True)
+    address_line1 = Column(String)
+    address_line2 = Column(String)
+    city = Column(String)
+    state_province = Column(String)
+    country_region = Column(String)
+    postal_code = Column(String)
+    row_guid = Column(String)
+    modified_date = Column(TIMESTAMP)
+    processed_date = Column(DATE)
+    is_valid = Column(Boolean)
+
+
+class DmMonthlyCitySalesSummary(Base):
+    __tablename__ = 'monthly_city_sales_summary'
+    __table_args__ = {"schema": "dm"}
+
+    order_year = Column(String, primary_key=True)
+    order_month = Column(String, primary_key=True)
+    city = Column(String, primary_key=True)
+    state_province = Column(String)
+    country_region = Column(String)
+    total_due = Column(FLOAT)
+    profit = Column(FLOAT)
+    due_growth_rate = Column(FLOAT)
+
+
+class DmProductProfitWeeklyTop10(Base):
+    __tablename__ = 'product_profit_weekly_top10'
+    __table_args__ = {"schema": "dm"}
+
+    order_year = Column(String, primary_key=True)
+    order_week_of_year = Column(String, primary_key=True)
+    product_id = Column(INTEGER, primary_key=True)
+    product_name = Column(String)
+    color = Column(String)
+    standard_cost = Column(FLOAT)
+    list_price = Column(FLOAT)
+    rank = Column(INTEGER)
+
+
+class DmShippedOrderDurationTop10(Base):
+    __tablename__ = 'shipped_order_duration_top10'
+    __table_args__ = {"schema": "dm"}
+
+    sales_order_id = Column(INTEGER, primary_key=True)
+    sales_order_number = Column(String)
+    ship_to_city = Column(String)
+    ship_to_province = Column(String)
+    ship_to_country_region = Column(String)
+    ship_to_postal_code = Column(String)
+    order_date = Column(DATE)
+    modified_date = Column(TIMESTAMP)
+    duration = Column(INTEGER)
+    rank = Column(INTEGER)
